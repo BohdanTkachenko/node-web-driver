@@ -1,0 +1,28 @@
+{
+  "name": "web-driver",
+  "version": "0.0.1",
+  "description": "Synchronous WebDriver bindings to node.js",
+  "main": "WebDriver.js",
+  "dependencies": {
+    "http-sync": "~0.0.1",
+    "underscore": "~1.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bogus-weber/node-web-driver.git"
+  },
+  "keywords": [
+    "selenium",
+    "webdriver",
+    "tests"
+  ],
+  "author": "Bogdan Tkachenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bogus-weber/node-web-driver/issues"
+  }
+}
