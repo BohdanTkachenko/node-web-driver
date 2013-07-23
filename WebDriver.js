@@ -62,7 +62,7 @@ WebDriver = module.exports = function () {
 
   function _errorByCode (code, msg) {
     var
-      dir = './errors/',
+      dir = __dirname + '/errors/',
       errors = fs.readdirSync(dir),
       i, fn,
       error, obj;
@@ -89,7 +89,7 @@ WebDriver = module.exports = function () {
 
   function _request (path, method, data) {
     method = method || 'GET';
-    data = data || {};
+    data = data || null;
 
     if (/:sessionId/.test(path)) {
       if (!session.sessionId) {
@@ -428,6 +428,18 @@ WebDriver = module.exports = function () {
   };
 
   /**
+   * Check if given text present in page source.
+   *
+   * @param {String} text Text to search.
+   *
+   * @returns {Boolean}
+   */
+
+  this.isTextPresent = function (text) {
+    return this.getSource().indexOf(text) !== -1;
+  };
+
+  /**
    * Search for an element on the page, starting from the identified element.
    *
    * The located element will be returned as a {WebElement} object. The table below lists the locator strategies that
@@ -575,7 +587,7 @@ WebDriver = module.exports = function () {
    * @returns {*}
    */
   this.getElementText = function (element) {
-    return _get('/session/:sessionId/element/' + element.getElementId() + '/text');
+    return _get('/session/:sessionId/element/' + element.getElementId() + '/text').value;
   };
 
   /**
@@ -942,6 +954,8 @@ WebDriver = module.exports = function () {
    */
   this.waitForElement = function (using, value, timeout, interval) {
     timeout = timeout || 15;
+    interval = interval || 0.5;
+
     var conditionFn = function () {
       return this.hasElement(using, value);
     };
@@ -952,6 +966,18 @@ WebDriver = module.exports = function () {
     }
 
     return this.getElement(using, value);
+  };
+
+  this.waitForElementByXpath = function (value) {
+    return this.waitForElement('xpath', value);
+  };
+
+  this.waitForElementByName = function (value) {
+    return this.waitForElement('name', value);
+  };
+
+  this.waitForElementById = function (value) {
+    return this.waitForElement('id', value);
   };
 
   /**

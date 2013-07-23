@@ -1,6 +1,6 @@
 {
   "name": "web-driver",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Synchronous WebDriver bindings to node.js",
   "main": "WebDriver.js",
   "dependencies": {
@@ -20,9 +20,16 @@
     "webdriver",
     "tests"
   ],
-  "author": "Bogdan Tkachenko",
+  "author": {
+    "name": "Bogdan Tkachenko",
+    "email": "bogus.weber@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bogus-weber/node-web-driver/issues"
-  }
+  },
+  "readme": "Synchronous WebDriver bindings to node.js",
+  "readmeFilename": "README.md",
+  "_id": "web-driver@0.0.2",
+  "_from": "web-driver@*"
 }
