@@ -15,7 +15,10 @@ var
   Timeout = require('./errors/Timeout');
   NoAlertOpenError = require('./errors/NoAlertOpenError');
 
-WebDriver = module.exports = function () {
+/**
+ * @constructor
+ */
+WebDriver = function () {
   var
     session = null,
     remoteDriverHttpParams = {
@@ -41,13 +44,13 @@ WebDriver = module.exports = function () {
   /**
    * Do not do anything for some time.
    *
-   * Some functions are need this to do interval checks for element appearing or disappearing.
+   * <p>Some functions are need this to do interval checks for element appearing or disappearing.</p>
+   *
+   * @private
    *
    * @param {Number} seconds Time to wait.
    *
-   * @returns {*}
-   *
-   * @private
+   * @returns {WebDriver}
    */
   function _sleep (seconds) {
     var ms = seconds * 1000;
@@ -60,6 +63,16 @@ WebDriver = module.exports = function () {
     return this;
   }
 
+  /**
+   * Throw error by error code.
+   *
+   * @private
+   *
+   * @param {Number} code Error code.
+   * @param {String} [msg] Text to omit default error message.
+   *
+   * @throws {AbstractError}
+   */
   function _errorByCode (code, msg) {
     var
       dir = __dirname + '/errors/',
@@ -87,6 +100,17 @@ WebDriver = module.exports = function () {
     throw UnknownError(msg);
   }
 
+  /**
+   * Make a request to webdriver with given params
+   *
+   * @private
+   *
+   * @param {String} [path] webdriver path (method) to call.
+   * @param {String} [method] HTTP method for request (e.g. GET, POST, PUT, ...).
+   * @param {String} [data] Data for POST payload
+   *
+   * @return {Object} Request result.
+   */
   function _request (path, method, data) {
     method = method || 'GET';
     data = data || null;
@@ -128,7 +152,8 @@ WebDriver = module.exports = function () {
     }
 
     if (res.headers['content-type'] !== 'application/json; charset=utf-8') {
-      throw method + ' ' + path + ': got content-type ' + res.headers['content-type'] + '. should be "application/json; charset=utf-8"';
+      throw method + ' ' + path + ': got content-type ' + res.headers['content-type'] +
+        '. should be "application/json; charset=utf-8"';
     }
 
     try {
@@ -144,23 +169,50 @@ WebDriver = module.exports = function () {
     return resObj;
   }
 
+  /**
+   * GET request to webdriver on given path.
+   *
+   * @see WebDriver#_request
+   * @private
+   *
+   * @param {String} path
+   *
+   * @returns {Object}
+   */
   function _get (path) {
     return _request(path, 'GET');
   }
 
+  /**
+   * POST request to webdriver on given path.
+   *
+   * @see WebDriver#_request
+   * @private
+   *
+   * @param {String} path
+   * @patam {Object} data POST data.
+   *
+   * @returns {Object}
+   */
   function _post (path, data) {
     return _request(path, 'POST', JSON.stringify(data));
   }
 
   _constructor.apply(this, arguments);
 
+  /**
+   * Constant object with special keys.
+   *
+   * @constant
+   * @type {SpecialKeys}
+   */
   this.SPECIAL_KEYS = SpecialKeys;
 
   /**
    * Create a new session and remembers sessionId for future calls.
    *
-   * The server should attempt to create a session that most closely matches the desired and required capabilities.
-   * Required capabilities have higher priority than desired capabilities and must be set for the session to be created.
+   * <p>The server should attempt to create a session that most closely matches the desired and required capabilities.</p>
+   * <p>Required capabilities have higher priority than desired capabilities and must be set for the session to be created.</p>
    *
    * @param {Object} desiredCapabilities
    * @param {Object} requiredCapabilities
@@ -205,7 +257,7 @@ WebDriver = module.exports = function () {
   /**
    * Delete the session.
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.stop = function () {
     _request('/session/:sessionId', 'DELETE');
@@ -241,12 +293,12 @@ WebDriver = module.exports = function () {
   /**
    * Set the amount of time the driver should wait when searching for elements.
    *
-   * When searching for a single element, the driver should poll the page until an element
+   * <p>When searching for a single element, the driver should poll the page until an element
    * is found or the timeout expires, whichever occurs first. When searching for multiple elements,
    * the driver should poll the page until at least one element is found or the timeout expires, at
-   * which point it should return an empty list.
+   * which point it should return an empty list.</p>
    *
-   * If this command is never sent, the driver should default to an implicit wait of 0ms.
+   * <p>If this command is never sent, the driver should default to an implicit wait of 0ms.</p>
    *
    * @param {Number} seconds The amount of time to wait. This value has a lower bound of 0.
    */
@@ -348,20 +400,20 @@ WebDriver = module.exports = function () {
   /**
    * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
    *
-   * The executed script is assumed to be synchronous and the result of evaluating the script is returned to the client.
+   * <p>The executed script is assumed to be synchronous and the result of evaluating the script is returned to the client.</p>
    *
-   * The script argument defines the script to execute in the form of a function body. The value returned by that
+   * <p>The script argument defines the script to execute in the form of a function body. The value returned by that
    * function will be returned to the client. The function will be invoked with the provided args array and the
-   * values may be accessed via the arguments object in the order specified.
+   * values may be accessed via the arguments object in the order specified.</p>
    *
-   * Arguments may be any JSON-primitive, array, or JSON object. JSON objects that define a {WebElement} reference
+   * <p>Arguments may be any JSON-primitive, array, or JSON object. JSON objects that define a {WebElement} reference
    * will be converted to the corresponding DOM element. Likewise, any WebElements in the script result will be
-   * returned to the client as {WebElement} JSON objects.
+   * returned to the client as {WebElement} JSON objects.</p>
    *
    * @param {String} script The script to execute.
    * @param {Object} args The script arguments.
    *
-   * @returns {*} The script result.
+   * @returns {WebDriver} The script result.
    */
   this.execute = function (script, args) {
     return _post('/session/:sessionId/execute', {
@@ -373,25 +425,25 @@ WebDriver = module.exports = function () {
   /**
    * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
    *
-   * The executed script is assumed to be asynchronous and must signal that is done by invoking the provided callback,
+   * <p>The executed script is assumed to be asynchronous and must signal that is done by invoking the provided callback,
    * which is always provided as the final argument to the function. The value to this callback will be returned to the
-   * client.
+   * client.</p>
    *
-   * Asynchronous script commands may not span page loads. If an unload event is fired while waiting for a script result,
-   * an error should be returned to the client.
+   * <p>Asynchronous script commands may not span page loads. If an unload event is fired while waiting for a script result,
+   * an error should be returned to the client.</p>
    *
-   * The script argument defines the script to execute in teh form of a function body. The function will be invoked with
+   * <p>The script argument defines the script to execute in teh form of a function body. The function will be invoked with
    * the provided args array and the values may be accessed via the arguments object in the order specified. The final
-   * argument will always be a callback function that must be invoked to signal that the script has finished.
+   * argument will always be a callback function that must be invoked to signal that the script has finished.</p>
    *
-   * Arguments may be any JSON-primitive, array, or JSON object. JSON objects that define a {WebElement} reference will be
+   * <p>Arguments may be any JSON-primitive, array, or JSON object. JSON objects that define a {WebElement} reference will be
    * converted to the corresponding DOM element. Likewise, any WebElements in the script result will be returned to the
-   * client as {WebElement} JSON objects.
+   * client as {WebElement} JSON objects.</p>
    *
    * @param {String} script The script to execute.
    * @param {Object} args The script arguments.
    *
-   * @returns {*} The script result.
+   * @returns {WebDriver} The script result.
    */
   this.executeAsync = function (script, args) {
     return _post('/session/:sessionId/execute_async', {
@@ -442,20 +494,27 @@ WebDriver = module.exports = function () {
   /**
    * Search for an element on the page, starting from the identified element.
    *
-   * The located element will be returned as a {WebElement} object. The table below lists the locator strategies that
-   * each server should support. Each locator must return the first matching element located in the DOM.
+   * <p>The located element will be returned as a WebElement object.<p>
    *
-   * - class name        : Returns an element whose class name contains the search value; compound class names are not
-   *                       permitted;
-   * - css selector      : Returns an element matching a CSS selector;
-   * - id                : Returns an element whose ID attribute matches the search value;
-   * - name              : Returns an element whose NAME attribute matches the search value;
-   * - link text         : Returns an anchor element whose visible text matches the search value;
-   * - partial link text : Returns an anchor element whose visible text partially matches the search value;
-   * - tag name          : Returns an element whose tag name matches the search value;
-   * - xpath             : Returns an element matching an XPath expression. The provided XPath expression must be applied to the
-   *                       server "as is"; if the expression is not relative to the element root, the server should not modify it.
-   *                       Consequently, an XPath query may return elements not contained in the root element's subtree.
+   * <p>The table below lists the locator strategies that each server should support.
+   * Each locator must return the first matching element located in the DOM.</p>
+   *
+   * <ul>
+   * <li><strong>class name</strong> &mdash; Returns an element whose class name contains the search value;
+   *                                         compound class names are not permitted</li>
+   * <li><strong>css selector</strong> &mdash; Returns an element matching a CSS selector</li>
+   * <li><strong>id</strong> &mdash; Returns an element whose ID attribute matches the search value</li>
+   * <li><strong>name</strong> &mdash; Returns an element whose NAME attribute matches the search value</li>
+   * <li><strong>link text</strong> &mdash; Returns an anchor element whose visible text matches the search value</li>
+   * <li><strong>partial link text</strong> &mdash; Returns an anchor element whose visible text partially matches
+   *                                                the search value</li>
+   * <li><strong>tag name</strong> &mdash; Returns an element whose tag name matches the search value</li>
+   * <li><strong>xpath</strong> &mdash; Returns an element matching an XPath expression.
+   *                                    The provided XPath expression must be applied to the
+   *                                    server "as is"; if the expression is not relative to the element root,
+   *                                    the server should not modify it.
+   *                                    Consequently, an XPath query may return elements not contained in the root
+   *                                    element's subtree</li>
    *
    * @param {String} using The locator strategy to use.
    * @param {String} value The search target.
@@ -478,20 +537,7 @@ WebDriver = module.exports = function () {
   /**
    * Search for multiple elements on the page, starting from the identified element.
    *
-   * The located elements will be returned as a {WebElement} objects. The table below lists the locator strategies that
-   * each server should support. Elements should be returned in the order located in the DOM.
-   *
-   * - class name        : Returns an element whose class name contains the search value; compound class names are not
-   *                       permitted;
-   * - css selector      : Returns an element matching a CSS selector;
-   * - id                : Returns an element whose ID attribute matches the search value;
-   * - name              : Returns an element whose NAME attribute matches the search value;
-   * - link text         : Returns an anchor element whose visible text matches the search value;
-   * - partial link text : Returns an anchor element whose visible text partially matches the search value;
-   * - tag name          : Returns an element whose tag name matches the search value;
-   * - xpath             : Returns an element matching an XPath expression. The provided XPath expression must be applied to the
-   *                       server "as is"; if the expression is not relative to the element root, the server should not modify it.
-   *                       Consequently, an XPath query may return elements not contained in the root element's subtree.
+   * @see WebDriver#getElement
    *
    * @param {String} using The locator strategy to use.
    * @param {String} value The search target.
@@ -514,9 +560,9 @@ WebDriver = module.exports = function () {
   };
 
   /**
-   * Get {WebElement} if query was success full. Otherwise will return {null}.
+   * Get WebElement if query was success full. Otherwise will return null.
    *
-   * It handles only NoSuchElement error. Any other errors will be re-thrown.
+   * <p>It handles only NoSuchElement error. Any other errors will be re-thrown.</p>
    *
    * @param {String} using See WebDriver.getElement() for details.
    * @param {String} value Value for query.
@@ -556,7 +602,7 @@ WebDriver = module.exports = function () {
    *
    * @param {WebElement} element
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.clickElement = function (element) {
     _post('/session/:sessionId/element/' + element.getElementId() + '/click');
@@ -567,11 +613,11 @@ WebDriver = module.exports = function () {
   /**
    * Submit a FORM element.
    *
-   * The submit command may also be applied to any element that is a descendant of a FORM element.
+   * <p>The submit command may also be applied to any element that is a descendant of a FORM element.</p>
    *
    * @param {WebElement} element
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.submitElement = function (element) {
     _post('/session/:sessionId/element/' + element.getElementId() + '/submit');
@@ -584,7 +630,7 @@ WebDriver = module.exports = function () {
    *
    * @param {WebElement} element
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.getElementText = function (element) {
     return _get('/session/:sessionId/element/' + element.getElementId() + '/text').value;
@@ -593,23 +639,25 @@ WebDriver = module.exports = function () {
   /**
    * Send a sequence of key strokes to an element.
    *
-   * The server must process the key sequence as follows:
-   * - Each key that appears on the keyboard without requiring modifiers are sent as a keydown followed by a key up.
-   * - If the server does not support native events and must simulate key strokes with JavaScript, it must generate
+   * <p>The server must process the key sequence as follows:</p>
+   * <ul>
+   * <li>- Each key that appears on the keyboard without requiring modifiers are sent as a keydown followed by a key up.</li>
+   * <li>- If the server does not support native events and must simulate key strokes with JavaScript, it must generate
    *   keydown, keypress, and keyup events, in that order. The keypress event should only be fired when the
-   *   corresponding key is for a printable character;
-   * - If a key requires a modifier key (e.g. "!" on a standard US keyboard), the sequence is: modifier down, key down,
-   *   key up, modifier up, where key is the ideal unmodified key value (using the previous example, a "1");
-   * - Modifier keys (Ctrl, Shift, Alt, and Command/Meta) are assumed to be "sticky"; each modifier should be held down
+   *   corresponding key is for a printable character;</li>
+   * <li>- If a key requires a modifier key (e.g. "!" on a standard US keyboard), the sequence is: modifier down, key down,
+   *   key up, modifier up, where key is the ideal unmodified key value (using the previous example, a "1");</li>
+   * <li>- Modifier keys (Ctrl, Shift, Alt, and Command/Meta) are assumed to be "sticky"; each modifier should be held down
    *   (e.g. only a keydown event) until either the modifier is encountered again in the sequence, or the NULL (U+E000)
-   *   key is encountered;
-   * - Each key sequence is terminated with an implicit NULL key. Subsequently, all depressed modifier keys must be
-   *   released (with corresponding keyup events) at the end of the sequence.
+   *   key is encountered;</li>
+   * <li>- Each key sequence is terminated with an implicit NULL key. Subsequently, all depressed modifier keys must be
+   *   released (with corresponding keyup events) at the end of the sequence.</li>
+   * </ul>
    *
    * @param {WebElement} element
    * @param {String} value
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.type = function (element, value) {
     if (! typeof value === 'string') {
@@ -624,14 +672,15 @@ WebDriver = module.exports = function () {
   };
 
   /**
-   * Send a sequence of key strokes to the active element. This command is similar to the WebDriver.type command in
-   * every aspect except the implicit termination: The modifiers are not released at the end of the call. Rather, the
-   * state of the modifier keys is kept between calls, so mouse interactions can be performed while modifier keys are
-   * depressed.
+   * Send a sequence of key strokes to the active element.
+   *
+   * <p>This command is similar to the WebDriver.type command in every aspect except the implicit termination:
+   * The modifiers are not released at the end of the call. Rather, the state of the modifier keys is kept
+   * between calls, so mouse interactions can be performed while modifier keys are depressed.</p>
    *
    * @param {String} value
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.keys = function (value) {
     if (! typeof value === 'string') {
@@ -661,7 +710,7 @@ WebDriver = module.exports = function () {
    *
    * @param {WebElement} element
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.clear = function (element) {
     _post('/session/:sessionId/element/' + element.getElementId() + '/clear');
@@ -719,7 +768,7 @@ WebDriver = module.exports = function () {
    *
    * @param {WebElement} element
    *
-   * @returns {x, y} The X and Y coordinates for the element on the page.
+   * @returns {Object} The X and Y coordinates for the element on the page.
    */
   this.getLocation = function (element) {
     return _get('/session/:sessionId/element/' + element.getElementId() + '/location').value;
@@ -728,12 +777,12 @@ WebDriver = module.exports = function () {
   /**
    * Determine an element's location on the screen once it has been scrolled into view.
    *
-   * Note: This is considered an internal command and should only be used to determine an element's location for
-   *       correctly generating native events.
+   * <p>Note: This is considered an internal command and should only be used to determine an element's location for
+   *       correctly generating native events.</p>
    *
    * @param {WebElement} element
    *
-   * @returns {x, y} The X and Y coordinates for the element on the page.
+   * @returns {Object} The X and Y coordinates for the element on the page.
    */
   this.getLocationInView = function (element) {
     return _get('/session/:sessionId/element/' + element.getElementId() + '/location_in_view').value;
@@ -751,8 +800,10 @@ WebDriver = module.exports = function () {
   };
 
   /**
-   * Query the value of an element's computed CSS property. The CSS property to query should be specified using the CSS
-   * property name, not the JavaScript property name (e.g. background-color instead of backgroundColor).
+   * Query the value of an element's computed CSS property.
+   *
+   * <p>The CSS property to query should be specified using the CSS property name,
+   * not the JavaScript property name (e.g. background-color instead of backgroundColor).</p>
    *
    * @param {WebElement} element
    * @param {String} propertyName
@@ -807,7 +858,7 @@ WebDriver = module.exports = function () {
    *
    * @param {String} value
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.setPromptValue = function (value) {
     _post('/session/:sessionId/alert_text', {
@@ -820,9 +871,9 @@ WebDriver = module.exports = function () {
   /**
    * Accepts the currently displayed alert dialog.
    *
-   * Usually, this is equivalent to clicking on the 'OK' button in the dialog.
+   * <p>Usually, this is equivalent to clicking on the 'OK' button in the dialog.</p>
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.acceptAlert = function () {
     _post('/session/:sessionId/accept_alert');
@@ -833,10 +884,10 @@ WebDriver = module.exports = function () {
   /**
    * Dismisses the currently displayed alert dialog.
    *
-   * For confirm() and prompt() dialogs, this is equivalent to clicking
-   * the 'Cancel' button. For alert() dialogs, this is equivalent to clicking the 'OK' button.
+   * <p>For confirm() and prompt() dialogs, this is equivalent to clicking
+   * the 'Cancel' button. For alert() dialogs, this is equivalent to clicking the 'OK' button.</p>
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.dismissAlert = function () {
     _post('/session/:sessionId/dismiss_alert');
@@ -847,13 +898,13 @@ WebDriver = module.exports = function () {
   /**
    * Click any mouse button (at the coordinates set by the last moveto command).
    *
-   * Note that calling this command after calling buttondown and before calling button up (or any out-of-order
-   * interactions sequence) will yield undefined behaviour).
+   * <p>Note that calling this command after calling buttondown and before calling button up (or any out-of-order
+   * interactions sequence) will yield undefined behaviour).</p>
    *
    * @param {Number} button Which button, enum: {LEFT = 0, MIDDLE = 1 , RIGHT = 2}. Defaults to the left mouse button
    *                        if not specified.
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.click = function (button) {
     _post('/session/:sessionId/click', {
@@ -866,7 +917,7 @@ WebDriver = module.exports = function () {
   /**
    * Double-clicks at the current mouse coordinates (set by moveto).
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.doubleClick = function () {
     _post('/session/:sessionId/doubleclick');
@@ -877,13 +928,13 @@ WebDriver = module.exports = function () {
   /**
    * Click and hold the left mouse button (at the coordinates set by the last moveto command).
    *
-   * Note that the next mouse-related command that should follow is buttonup .
-   * Any other mouse command (such as click or another call to buttondown) will yield undefined behaviour.
+   * <p>Note that the next mouse-related command that should follow is buttonup .
+   * Any other mouse command (such as click or another call to buttondown) will yield undefined behaviour.</p>
    *
    * @param {Number} button Which button, enum: {LEFT = 0, MIDDLE = 1 , RIGHT = 2}. Defaults to the left mouse button
    *                        if not specified.
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.buttonDown = function (button) {
     _post('/session/:sessionId/buttondown', {
@@ -896,13 +947,13 @@ WebDriver = module.exports = function () {
   /**
    * Releases the mouse button previously held (where the mouse is currently at).
    *
-   * Must be called once for every buttondown command issued. See the note in click and buttondown about implications
-   * of out-of-order commands.
+   * <p>Must be called once for every buttondown command issued. See the note in click and buttondown about implications
+   * of out-of-order commands.</p>
    *
    * @param {Number} button Which button, enum: {LEFT = 0, MIDDLE = 1 , RIGHT = 2}. Defaults to the left mouse button
    *                        if not specified.
    *
-   * @returns {*}
+   * @returns {WebDriver}
    */
   this.buttonUp = function (button) {
     _post('/session/:sessionId/buttonup', {
@@ -1040,3 +1091,5 @@ WebDriver = module.exports = function () {
     throw new Timeout('There was an alert dialog still opened during ' + timeout + ' seconds.');
   }
 };
+
+module.exports = WebDriver;

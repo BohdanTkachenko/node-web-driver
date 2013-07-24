@@ -1,7 +1,10 @@
 var
   WebElement;
 
-WebElement = module.exports = function (elementId, wd) {
+/**
+ * @constructor
+ */
+WebElement = function (elementId, wd) {
   /**
    * Get element ID for current session.
    *
@@ -171,3 +174,5 @@ WebElement = module.exports = function (elementId, wd) {
     return this;
   };
 };
+
+module.exports = WebElement;

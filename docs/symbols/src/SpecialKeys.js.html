@@ -1,0 +1,77 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">SpecialKeys</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  2</span> 
+<span class='line'>  3</span> </span><span class="COMM">/**
+<span class='line'>  4</span>  * A constant object that contains special characters.
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * You should use this constant instead of using character codes.
+<span class='line'>  7</span>  *
+<span class='line'>  8</span>  * @class
+<span class='line'>  9</span>  */</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="NAME">SpecialKeys</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="WHIT">  </span><span class="STRN">'NULL'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE000'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="WHIT">  </span><span class="STRN">'Cancel'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE001'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="WHIT">  </span><span class="STRN">'Help'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE002'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="WHIT">  </span><span class="STRN">'BackSpace'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE003'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">  </span><span class="STRN">'Tab'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE004'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="WHIT">  </span><span class="STRN">'Clear'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE005'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">  </span><span class="STRN">'Return'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE006'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">  </span><span class="STRN">'Enter'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE007'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">  </span><span class="STRN">'Shift'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE008'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">  </span><span class="STRN">'Control'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE009'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">  </span><span class="STRN">'Alt'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE00A'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">  </span><span class="STRN">'Pause'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE00B'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">  </span><span class="STRN">'Escape'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE00C'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">  </span><span class="STRN">'Space'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE00D'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">  </span><span class="STRN">'PageUp'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE00E'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="WHIT">  </span><span class="STRN">'PageDown'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE00F'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">  </span><span class="STRN">'End'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE010'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">  </span><span class="STRN">'Home'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE011'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">  </span><span class="STRN">'LeftArrow'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE012'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">  </span><span class="STRN">'UpArrow'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE013'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">  </span><span class="STRN">'RightArrow'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE014'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">  </span><span class="STRN">'DownArrow'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE015'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">  </span><span class="STRN">'Insert'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE016'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">  </span><span class="STRN">'Delete'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE017'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">  </span><span class="STRN">'Semicolon'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE018'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">  </span><span class="STRN">'Equals'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE019'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad0'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE01A'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad1'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE01B'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad2'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE01C'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad3'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE01D'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad4'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE01E'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad5'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE01F'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad6'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE020'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad7'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE021'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad8'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE022'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">  </span><span class="STRN">'Numpad9'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE023'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">  </span><span class="STRN">'Multiply'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE024'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">  </span><span class="STRN">'Add'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE025'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">  </span><span class="STRN">'Separator'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE026'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">  </span><span class="STRN">'Subtract'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE027'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">  </span><span class="STRN">'Decimal'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE028'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">  </span><span class="STRN">'Divide'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE029'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="STRN">'F1'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE031'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">  </span><span class="STRN">'F2'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE032'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">  </span><span class="STRN">'F3'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE033'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">  </span><span class="STRN">'F4'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE034'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">  </span><span class="STRN">'F5'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE035'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">  </span><span class="STRN">'F6'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE036'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">  </span><span class="STRN">'F7'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE037'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">  </span><span class="STRN">'F8'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE038'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">  </span><span class="STRN">'F9'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE039'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">  </span><span class="STRN">'F10'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE03A'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">  </span><span class="STRN">'F11'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE03B'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">  </span><span class="STRN">'F12'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE03C'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">  </span><span class="STRN">'Command'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE03D'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">  </span><span class="STRN">'Meta'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'\uE03D'</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> 
+<span class='line'> 69</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">SpecialKeys</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> </span></pre></body></html>
