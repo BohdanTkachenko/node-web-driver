@@ -94,17 +94,17 @@
 <span class='line'> 87</span> </span><span class="WHIT">        </span><span class="KEYW">continue</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 88</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'> 89</span> 
-<span class='line'> 90</span> </span><span class="WHIT">      </span><span class="NAME">error</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'> 91</span> </span><span class="WHIT">        </span><span class="NAME">obj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">error</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">      </span><span class="NAME">error</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">      </span><span class="NAME">obj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">error</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 92</span> 
 <span class='line'> 93</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">obj.code</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">code</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 94</span> </span><span class="WHIT">        </span><span class="KEYW">continue</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">        </span><span class="KEYW">continue</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 95</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'> 96</span> 
 <span class='line'> 97</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 98</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'> 99</span> 
-<span class='line'>100</span> </span><span class="WHIT">    </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="NAME">UnknownError</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownError</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>101</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>102</span> 
 <span class='line'>103</span> </span><span class="WHIT">  </span><span class="COMM">/**
@@ -124,7 +124,7 @@
 <span class='line'>117</span> 
 <span class='line'>118</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="REGX">/:sessionId/</span><span class="PUNC">.</span><span class="NAME">test</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>119</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">session.sessionId</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>120</span> </span><span class="WHIT">        </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">NoSuchDriver</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">        </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">NoSuchDriver</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>121</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>122</span> 
 <span class='line'>123</span> </span><span class="WHIT">      </span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path.replace</span><span class="PUNC">(</span><span class="STRN">':sessionId'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">session.sessionId</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
@@ -153,9 +153,9 @@
 <span class='line'>146</span> 
 <span class='line'>147</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">res.headers.location</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>148</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">res.statusCode</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">404</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>149</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownCommand</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownCommand</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>150</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">res.statusCode</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">200</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>151</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownError</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownError</span><span class="PUNC">(</span><span class="STRN">'Unknown status code: '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">req.statusCode</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>152</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>153</span> 
 <span class='line'>154</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">res.headers</span><span class="PUNC">[</span><span class="STRN">'content-type'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'application/json; charset=utf-8'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -535,7 +535,7 @@
 <span class='line'>528</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>529</span> 
 <span class='line'>530</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">res.value.ELEMENT</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>531</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownError</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownError</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>532</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>533</span> 
 <span class='line'>534</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">WebElement</span><span class="PUNC">(</span><span class="NAME">res.value.ELEMENT</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
@@ -559,7 +559,7 @@
 <span class='line'>552</span> 
 <span class='line'>553</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">res.value.map</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>554</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">item.ELEMENT</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>555</span> </span><span class="WHIT">        </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownError</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="WHIT">        </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownError</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>556</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>557</span> 
 <span class='line'>558</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">WebElement</span><span class="PUNC">(</span><span class="NAME">item.ELEMENT</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
@@ -667,7 +667,7 @@
 <span class='line'>660</span>    * @returns {WebDriver}
 <span class='line'>661</span>    */</span><span class="WHIT">
 <span class='line'>662</span> </span><span class="WHIT">  </span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">element</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>663</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>663</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>664</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">TypeError</span><span class="PUNC">(</span><span class="STRN">'value should be a string'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>665</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>666</span> 
@@ -690,7 +690,7 @@
 <span class='line'>683</span>    * @returns {WebDriver}
 <span class='line'>684</span>    */</span><span class="WHIT">
 <span class='line'>685</span> </span><span class="WHIT">  </span><span class="NAME">this.keys</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>686</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>686</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>687</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">TypeError</span><span class="PUNC">(</span><span class="STRN">'value should be a string'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>688</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>689</span> 
@@ -903,201 +903,224 @@
 <span class='line'>896</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>897</span> 
 <span class='line'>898</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>899</span>    * Click any mouse button (at the coordinates set by the last moveto command).
+<span class='line'>899</span>    * Move the mouse by an offset of the specificed element.
 <span class='line'>900</span>    *
-<span class='line'>901</span>    * &lt;p>Note that calling this command after calling buttondown and before calling button up (or any out-of-order
-<span class='line'>902</span>    * interactions sequence) will yield undefined behaviour).&lt;/p>
-<span class='line'>903</span>    *
-<span class='line'>904</span>    * @param {Number} button Which button, enum: {LEFT = 0, MIDDLE = 1 , RIGHT = 2}. Defaults to the left mouse button
-<span class='line'>905</span>    *                        if not specified.
-<span class='line'>906</span>    *
-<span class='line'>907</span>    * @returns {WebDriver}
-<span class='line'>908</span>    */</span><span class="WHIT">
-<span class='line'>909</span> </span><span class="WHIT">  </span><span class="NAME">this.click</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">button</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>910</span> </span><span class="WHIT">    </span><span class="NAME">_post</span><span class="PUNC">(</span><span class="STRN">'/session/:sessionId/click'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>911</span> </span><span class="WHIT">      </span><span class="NAME">button</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">button</span><span class="WHIT">
-<span class='line'>912</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>913</span> 
-<span class='line'>914</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>915</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>916</span> 
-<span class='line'>917</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>918</span>    * Double-clicks at the current mouse coordinates (set by moveto).
-<span class='line'>919</span>    *
-<span class='line'>920</span>    * @returns {WebDriver}
-<span class='line'>921</span>    */</span><span class="WHIT">
-<span class='line'>922</span> </span><span class="WHIT">  </span><span class="NAME">this.doubleClick</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>923</span> </span><span class="WHIT">    </span><span class="NAME">_post</span><span class="PUNC">(</span><span class="STRN">'/session/:sessionId/doubleclick'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>924</span> 
-<span class='line'>925</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>926</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>927</span> 
-<span class='line'>928</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>929</span>    * Click and hold the left mouse button (at the coordinates set by the last moveto command).
-<span class='line'>930</span>    *
-<span class='line'>931</span>    * &lt;p>Note that the next mouse-related command that should follow is buttonup .
-<span class='line'>932</span>    * Any other mouse command (such as click or another call to buttondown) will yield undefined behaviour.&lt;/p>
-<span class='line'>933</span>    *
-<span class='line'>934</span>    * @param {Number} button Which button, enum: {LEFT = 0, MIDDLE = 1 , RIGHT = 2}. Defaults to the left mouse button
-<span class='line'>935</span>    *                        if not specified.
-<span class='line'>936</span>    *
-<span class='line'>937</span>    * @returns {WebDriver}
-<span class='line'>938</span>    */</span><span class="WHIT">
-<span class='line'>939</span> </span><span class="WHIT">  </span><span class="NAME">this.buttonDown</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">button</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>940</span> </span><span class="WHIT">    </span><span class="NAME">_post</span><span class="PUNC">(</span><span class="STRN">'/session/:sessionId/buttondown'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>941</span> </span><span class="WHIT">      </span><span class="NAME">button</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">button</span><span class="WHIT">
-<span class='line'>942</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>943</span> 
-<span class='line'>944</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>945</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>946</span> 
-<span class='line'>947</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>948</span>    * Releases the mouse button previously held (where the mouse is currently at).
-<span class='line'>949</span>    *
-<span class='line'>950</span>    * &lt;p>Must be called once for every buttondown command issued. See the note in click and buttondown about implications
-<span class='line'>951</span>    * of out-of-order commands.&lt;/p>
-<span class='line'>952</span>    *
-<span class='line'>953</span>    * @param {Number} button Which button, enum: {LEFT = 0, MIDDLE = 1 , RIGHT = 2}. Defaults to the left mouse button
-<span class='line'>954</span>    *                        if not specified.
-<span class='line'>955</span>    *
-<span class='line'>956</span>    * @returns {WebDriver}
-<span class='line'>957</span>    */</span><span class="WHIT">
-<span class='line'>958</span> </span><span class="WHIT">  </span><span class="NAME">this.buttonUp</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">button</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>959</span> </span><span class="WHIT">    </span><span class="NAME">_post</span><span class="PUNC">(</span><span class="STRN">'/session/:sessionId/buttonup'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>960</span> </span><span class="WHIT">      </span><span class="NAME">button</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">button</span><span class="WHIT">
-<span class='line'>961</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>962</span> 
-<span class='line'>963</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>964</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>965</span> 
-<span class='line'>966</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>967</span>    * Polls specified function.
-<span class='line'>968</span>    *
-<span class='line'>969</span>    * @param conditionFn Function to poll. It should return true or false.
-<span class='line'>970</span>    * @param thisArg
-<span class='line'>971</span>    * @param {Number} [timeout] Timeout in seconds. Defaults to 15 s.
-<span class='line'>972</span>    * @param {Number} [interval] Interval in seconds. Defaults to 0.5 s.
-<span class='line'>973</span>    * @returns {Boolean}
-<span class='line'>974</span>    */</span><span class="WHIT">
-<span class='line'>975</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForCondition</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">conditionFn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">thisArg</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>976</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">conditionFn</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>977</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">TypeError</span><span class="PUNC">(</span><span class="STRN">'condition must be a function that returns a Boolean'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>978</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>979</span> 
-<span class='line'>980</span> </span><span class="WHIT">    </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">15</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>981</span> </span><span class="WHIT">    </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0.5</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>982</span> 
-<span class='line'>983</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">timeLeft</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>984</span> </span><span class="WHIT">    </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeLeft</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>985</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">conditionFn.call</span><span class="PUNC">(</span><span class="NAME">thisArg</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>986</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>987</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>901</span>    * If no element is specified, the move is relative to the current mouse cursor.
+<span class='line'>902</span>    * If an element is provided but no offset, the mouse will be moved to the center of the element.
+<span class='line'>903</span>    * If the element is not visible, it will be scrolled into view.
+<span class='line'>904</span>    *
+<span class='line'>905</span>    * @param {WebElement|null} el
+<span class='line'>906</span>    * @param {Number|null} offsetX
+<span class='line'>907</span>    * @param {Number|null} offsetY
+<span class='line'>908</span>    *
+<span class='line'>909</span>    * @return {WebDriver}
+<span class='line'>910</span>    */</span><span class="WHIT">
+<span class='line'>911</span> </span><span class="WHIT">  </span><span class="NAME">this.moveTo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">el</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offsetX</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offsetY</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>912</span> </span><span class="WHIT">    </span><span class="NAME">_post</span><span class="PUNC">(</span><span class="STRN">'/session/:sessionId/moveto'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>913</span> </span><span class="WHIT">      </span><span class="NAME">element</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">el</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">WebElement</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">el.getElementId</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>914</span> </span><span class="WHIT">      </span><span class="NAME">xoffset</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">offsetX</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>915</span> </span><span class="WHIT">      </span><span class="NAME">yoffset</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">offsetY</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="WHIT">
+<span class='line'>916</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>917</span> 
+<span class='line'>918</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>919</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>920</span> 
+<span class='line'>921</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>922</span>    * Click any mouse button (at the coordinates set by the last moveto command).
+<span class='line'>923</span>    *
+<span class='line'>924</span>    * &lt;p>Note that calling this command after calling buttondown and before calling button up (or any out-of-order
+<span class='line'>925</span>    * interactions sequence) will yield undefined behaviour).&lt;/p>
+<span class='line'>926</span>    *
+<span class='line'>927</span>    * @param {Number} button Which button, enum: {LEFT = 0, MIDDLE = 1 , RIGHT = 2}. Defaults to the left mouse button
+<span class='line'>928</span>    *                        if not specified.
+<span class='line'>929</span>    *
+<span class='line'>930</span>    * @returns {WebDriver}
+<span class='line'>931</span>    */</span><span class="WHIT">
+<span class='line'>932</span> </span><span class="WHIT">  </span><span class="NAME">this.click</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">button</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>933</span> </span><span class="WHIT">    </span><span class="NAME">_post</span><span class="PUNC">(</span><span class="STRN">'/session/:sessionId/click'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>934</span> </span><span class="WHIT">      </span><span class="NAME">button</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">button</span><span class="WHIT">
+<span class='line'>935</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>936</span> 
+<span class='line'>937</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>938</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>939</span> 
+<span class='line'>940</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>941</span>    * Double-clicks at the current mouse coordinates (set by moveto).
+<span class='line'>942</span>    *
+<span class='line'>943</span>    * @returns {WebDriver}
+<span class='line'>944</span>    */</span><span class="WHIT">
+<span class='line'>945</span> </span><span class="WHIT">  </span><span class="NAME">this.doubleClick</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>946</span> </span><span class="WHIT">    </span><span class="NAME">_post</span><span class="PUNC">(</span><span class="STRN">'/session/:sessionId/doubleclick'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>947</span> 
+<span class='line'>948</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>949</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>950</span> 
+<span class='line'>951</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>952</span>    * Click and hold the left mouse button (at the coordinates set by the last moveto command).
+<span class='line'>953</span>    *
+<span class='line'>954</span>    * &lt;p>Note that the next mouse-related command that should follow is buttonup .
+<span class='line'>955</span>    * Any other mouse command (such as click or another call to buttondown) will yield undefined behaviour.&lt;/p>
+<span class='line'>956</span>    *
+<span class='line'>957</span>    * @param {Number} button Which button, enum: {LEFT = 0, MIDDLE = 1 , RIGHT = 2}. Defaults to the left mouse button
+<span class='line'>958</span>    *                        if not specified.
+<span class='line'>959</span>    *
+<span class='line'>960</span>    * @returns {WebDriver}
+<span class='line'>961</span>    */</span><span class="WHIT">
+<span class='line'>962</span> </span><span class="WHIT">  </span><span class="NAME">this.buttonDown</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">button</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>963</span> </span><span class="WHIT">    </span><span class="NAME">_post</span><span class="PUNC">(</span><span class="STRN">'/session/:sessionId/buttondown'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>964</span> </span><span class="WHIT">      </span><span class="NAME">button</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">button</span><span class="WHIT">
+<span class='line'>965</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>966</span> 
+<span class='line'>967</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>968</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>969</span> 
+<span class='line'>970</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>971</span>    * Releases the mouse button previously held (where the mouse is currently at).
+<span class='line'>972</span>    *
+<span class='line'>973</span>    * &lt;p>Must be called once for every buttondown command issued. See the note in click and buttondown about implications
+<span class='line'>974</span>    * of out-of-order commands.&lt;/p>
+<span class='line'>975</span>    *
+<span class='line'>976</span>    * @param {Number} button Which button, enum: {LEFT = 0, MIDDLE = 1 , RIGHT = 2}. Defaults to the left mouse button
+<span class='line'>977</span>    *                        if not specified.
+<span class='line'>978</span>    *
+<span class='line'>979</span>    * @returns {WebDriver}
+<span class='line'>980</span>    */</span><span class="WHIT">
+<span class='line'>981</span> </span><span class="WHIT">  </span><span class="NAME">this.buttonUp</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">button</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>982</span> </span><span class="WHIT">    </span><span class="NAME">_post</span><span class="PUNC">(</span><span class="STRN">'/session/:sessionId/buttonup'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>983</span> </span><span class="WHIT">      </span><span class="NAME">button</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">button</span><span class="WHIT">
+<span class='line'>984</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>985</span> 
+<span class='line'>986</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>987</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>988</span> 
-<span class='line'>989</span> </span><span class="WHIT">      </span><span class="NAME">timeLeft</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>990</span> </span><span class="WHIT">      </span><span class="NAME">_sleep</span><span class="PUNC">(</span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>991</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>992</span> 
-<span class='line'>993</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>994</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>995</span> 
-<span class='line'>996</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>997</span>    * Wait for element and return it when it appears.
-<span class='line'>998</span>    *
-<span class='line'>999</span>    * @param {String} using See WebDriver.getElement() for details.
-<span class='line'>1000</span>    * @param {String} value Value for query.
-<span class='line'>1001</span>    * @param {Number} [timeout] Timeout in seconds.
-<span class='line'>1002</span>    * @param {Number} [interval] Interval in seconds.
-<span class='line'>1003</span>    *
-<span class='line'>1004</span>    * @returns {WebElement}
-<span class='line'>1005</span>    */</span><span class="WHIT">
-<span class='line'>1006</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1007</span> </span><span class="WHIT">    </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">15</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1008</span> </span><span class="WHIT">    </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0.5</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1009</span> 
-<span class='line'>1010</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">conditionFn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1011</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.hasElement</span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1012</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1013</span> 
-<span class='line'>1014</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.waitForCondition</span><span class="PUNC">(</span><span class="NAME">conditionFn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1015</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">(</span><span class="STRN">'Element "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" was not found using "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">using</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" after '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
-<span class='line'>1016</span> </span><span class="WHIT">        </span><span class="STRN">' seconds with polling interval of '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds.'</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>1017</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>989</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>990</span>    * Polls specified function.
+<span class='line'>991</span>    *
+<span class='line'>992</span>    * @param conditionFn Function to poll. It should return true or false.
+<span class='line'>993</span>    * @param thisArg
+<span class='line'>994</span>    * @param {Number} [timeout] Timeout in seconds. Defaults to 15 s.
+<span class='line'>995</span>    * @param {Number} [interval] Interval in seconds. Defaults to 0.5 s.
+<span class='line'>996</span>    * @returns {Boolean}
+<span class='line'>997</span>    */</span><span class="WHIT">
+<span class='line'>998</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForCondition</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">conditionFn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">thisArg</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>999</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">conditionFn</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1000</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">TypeError</span><span class="PUNC">(</span><span class="STRN">'condition must be a function that returns a Boolean'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1001</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1002</span> 
+<span class='line'>1003</span> </span><span class="WHIT">    </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">15</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1004</span> </span><span class="WHIT">    </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0.5</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1005</span> 
+<span class='line'>1006</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">timeLeft</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1007</span> </span><span class="WHIT">    </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeLeft</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1008</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">conditionFn.call</span><span class="PUNC">(</span><span class="NAME">thisArg</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1009</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1010</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1011</span> 
+<span class='line'>1012</span> </span><span class="WHIT">      </span><span class="NAME">timeLeft</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1013</span> </span><span class="WHIT">      </span><span class="NAME">_sleep</span><span class="PUNC">(</span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1014</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1015</span> 
+<span class='line'>1016</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1017</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>1018</span> 
-<span class='line'>1019</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.getElement</span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1020</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1021</span> 
-<span class='line'>1022</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElementByXpath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1023</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.waitForElement</span><span class="PUNC">(</span><span class="STRN">'xpath'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1024</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1025</span> 
-<span class='line'>1026</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElementByName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1027</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.waitForElement</span><span class="PUNC">(</span><span class="STRN">'name'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1028</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1029</span> 
-<span class='line'>1030</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElementById</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1031</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.waitForElement</span><span class="PUNC">(</span><span class="STRN">'id'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1032</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1033</span> 
-<span class='line'>1034</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>1035</span>    * Wait for element will be not present on a page.
-<span class='line'>1036</span>    *
-<span class='line'>1037</span>    * @param {String} using See WebDriver.getElement() for details.
-<span class='line'>1038</span>    * @param {String} value Value for query.
-<span class='line'>1039</span>    * @param {Number} [timeout] Timeout in seconds.
-<span class='line'>1040</span>    * @param {Number} [interval] Interval in seconds.
-<span class='line'>1041</span>    */</span><span class="WHIT">
-<span class='line'>1042</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElementDisappear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1043</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">conditionFn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1044</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">this.hasElement</span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1045</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1046</span> 
-<span class='line'>1047</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.waitForCondition</span><span class="PUNC">(</span><span class="NAME">conditionFn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1048</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">(</span><span class="STRN">'Element "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" was not found using "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">using</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" after '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
-<span class='line'>1049</span> </span><span class="WHIT">        </span><span class="STRN">' seconds with polling interval of '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds.'</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>1050</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1019</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>1020</span>    * Wait for element and return it when it appears.
+<span class='line'>1021</span>    *
+<span class='line'>1022</span>    * @param {String} using See WebDriver.getElement() for details.
+<span class='line'>1023</span>    * @param {String} value Value for query.
+<span class='line'>1024</span>    * @param {Number} [timeout] Timeout in seconds.
+<span class='line'>1025</span>    * @param {Number} [interval] Interval in seconds.
+<span class='line'>1026</span>    *
+<span class='line'>1027</span>    * @returns {WebElement}
+<span class='line'>1028</span>    */</span><span class="WHIT">
+<span class='line'>1029</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1030</span> </span><span class="WHIT">    </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">15</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1031</span> </span><span class="WHIT">    </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0.5</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1032</span> 
+<span class='line'>1033</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">conditionFn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1034</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.hasElement</span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1035</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1036</span> 
+<span class='line'>1037</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.waitForCondition</span><span class="PUNC">(</span><span class="NAME">conditionFn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1038</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">(</span><span class="STRN">'Element "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" was not found using "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">using</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" after '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'>1039</span> </span><span class="WHIT">        </span><span class="STRN">' seconds with polling interval of '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds.'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1040</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1041</span> 
+<span class='line'>1042</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.getElement</span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1043</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1044</span> 
+<span class='line'>1045</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElementByXpath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1046</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.waitForElement</span><span class="PUNC">(</span><span class="STRN">'xpath'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1047</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1048</span> 
+<span class='line'>1049</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElementByName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1050</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.waitForElement</span><span class="PUNC">(</span><span class="STRN">'name'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>1051</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>1052</span> 
-<span class='line'>1053</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>1054</span>    * Waits for alert dialog appear and returns it's text.
-<span class='line'>1055</span>    *
-<span class='line'>1056</span>    * @param {Number} [timeout] Timeout in seconds.
-<span class='line'>1057</span>    * @param {Number} [interval] Interval in seconds.
-<span class='line'>1058</span>    *
-<span class='line'>1059</span>    * @returns {String}
-<span class='line'>1060</span>    */</span><span class="WHIT">
-<span class='line'>1061</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForAlert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1062</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">conditionFn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1063</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.isAlertOpened</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1064</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1065</span> 
-<span class='line'>1066</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.waitForCondition</span><span class="PUNC">(</span><span class="NAME">conditionFn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1067</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">(</span><span class="STRN">'Alert was not found using after '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds with polling interval of '</span><span class="WHIT">
-<span class='line'>1068</span> </span><span class="WHIT">        </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds.'</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>1069</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1070</span> 
-<span class='line'>1071</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.getAlertText</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1072</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1073</span> 
-<span class='line'>1074</span> </span><span class="WHIT">  </span><span class="COMM">/**
-<span class='line'>1075</span>    * Waits for alert dialog not appear.
-<span class='line'>1076</span>    *
-<span class='line'>1077</span>    * @param {Number} [timeout] Timeout in seconds.
-<span class='line'>1078</span>    * @param {Number} [interval] Interval in seconds.
-<span class='line'>1079</span>    */</span><span class="WHIT">
-<span class='line'>1080</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForNoAlert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1081</span> </span><span class="WHIT">    </span><span class="KEYW">try</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1082</span> </span><span class="WHIT">      </span><span class="NAME">this.waitForAlert</span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1083</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">catch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1084</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1085</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1086</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1087</span> 
-<span class='line'>1088</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1089</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1090</span> 
-<span class='line'>1091</span> </span><span class="WHIT">    </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">(</span><span class="STRN">'There was an alert dialog still opened during '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds.'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1092</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1093</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1094</span> 
-<span class='line'>1095</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">WebDriver</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1096</span> </span></pre></body></html>
+<span class='line'>1053</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElementById</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1054</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.waitForElement</span><span class="PUNC">(</span><span class="STRN">'id'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1055</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1056</span> 
+<span class='line'>1057</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>1058</span>    * Wait for element will be not present on a page.
+<span class='line'>1059</span>    *
+<span class='line'>1060</span>    * @param {String} using See WebDriver.getElement() for details.
+<span class='line'>1061</span>    * @param {String} value Value for query.
+<span class='line'>1062</span>    * @param {Number} [timeout] Timeout in seconds.
+<span class='line'>1063</span>    * @param {Number} [interval] Interval in seconds.
+<span class='line'>1064</span>    */</span><span class="WHIT">
+<span class='line'>1065</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForElementDisappear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1066</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">conditionFn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1067</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">this.hasElement</span><span class="PUNC">(</span><span class="NAME">using</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1068</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1069</span> 
+<span class='line'>1070</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.waitForCondition</span><span class="PUNC">(</span><span class="NAME">conditionFn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1071</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">(</span><span class="STRN">'Element "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" was not found using "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">using</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" after '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'>1072</span> </span><span class="WHIT">        </span><span class="STRN">' seconds with polling interval of '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds.'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1073</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1074</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1075</span> 
+<span class='line'>1076</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>1077</span>    * Waits for alert dialog appear and returns it's text.
+<span class='line'>1078</span>    *
+<span class='line'>1079</span>    * @param {Number} [timeout] Timeout in seconds.
+<span class='line'>1080</span>    * @param {Number} [interval] Interval in seconds.
+<span class='line'>1081</span>    *
+<span class='line'>1082</span>    * @returns {String}
+<span class='line'>1083</span>    */</span><span class="WHIT">
+<span class='line'>1084</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForAlert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1085</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">conditionFn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1086</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.isAlertOpened</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1087</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1088</span> 
+<span class='line'>1089</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.waitForCondition</span><span class="PUNC">(</span><span class="NAME">conditionFn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1090</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">(</span><span class="STRN">'Alert was not found using after '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds with polling interval of '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'>1091</span> </span><span class="WHIT">        </span><span class="NAME">interval</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds.'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1092</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1093</span> 
+<span class='line'>1094</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.getAlertText</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1095</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1096</span> 
+<span class='line'>1097</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>1098</span>    * Waits for alert dialog not appear.
+<span class='line'>1099</span>    *
+<span class='line'>1100</span>    * @param {Number} [timeout] Timeout in seconds.
+<span class='line'>1101</span>    * @param {Number} [interval] Interval in seconds.
+<span class='line'>1102</span>    */</span><span class="WHIT">
+<span class='line'>1103</span> </span><span class="WHIT">  </span><span class="NAME">this.waitForNoAlert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1104</span> </span><span class="WHIT">    </span><span class="KEYW">try</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1105</span> </span><span class="WHIT">      </span><span class="NAME">this.waitForAlert</span><span class="PUNC">(</span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">interval</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1106</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">catch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1107</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1108</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1109</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1110</span> 
+<span class='line'>1111</span> </span><span class="WHIT">      </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1112</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1113</span> 
+<span class='line'>1114</span> </span><span class="WHIT">    </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Timeout</span><span class="PUNC">(</span><span class="STRN">'There was an alert dialog still opened during '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' seconds.'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1115</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1116</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1117</span> 
+<span class='line'>1118</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">WebDriver</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1119</span> </span></pre></body></html>

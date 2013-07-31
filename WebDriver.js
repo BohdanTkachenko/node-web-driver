@@ -87,17 +87,17 @@ WebDriver = function () {
         continue;
       }
 
-      error = require(dir + fn),
-        obj = new error(msg);
+      error = require(dir + fn);
+      obj = new error(msg);
 
       if (obj.code !== code) {
-        continue
+        continue;
       }
 
       throw obj;
     }
 
-    throw UnknownError(msg);
+    throw new UnknownError(msg);
   }
 
   /**
@@ -117,7 +117,7 @@ WebDriver = function () {
 
     if (/:sessionId/.test(path)) {
       if (!session.sessionId) {
-        throw new NoSuchDriver;
+        throw new NoSuchDriver();
       }
 
       path = path.replace(':sessionId', session.sessionId);
@@ -146,9 +146,9 @@ WebDriver = function () {
 
       return res.headers.location;
     } else if (res.statusCode === 404) {
-      throw new UnknownCommand;
+      throw new UnknownCommand();
     } else if (res.statusCode !== 200) {
-      throw new UnknownError;
+      throw new UnknownError('Unknown status code: ' + req.statusCode);
     }
 
     if (res.headers['content-type'] !== 'application/json; charset=utf-8') {
@@ -528,7 +528,7 @@ WebDriver = function () {
     });
 
     if (!res.value.ELEMENT) {
-      throw new UnknownError;
+      throw new UnknownError();
     }
 
     return new WebElement(res.value.ELEMENT, this);
@@ -552,7 +552,7 @@ WebDriver = function () {
 
     return res.value.map(function (item) {
       if (!item.ELEMENT) {
-        throw new UnknownError;
+        throw new UnknownError();
       }
 
       return new WebElement(item.ELEMENT, this);
@@ -660,7 +660,7 @@ WebDriver = function () {
    * @returns {WebDriver}
    */
   this.type = function (element, value) {
-    if (! typeof value === 'string') {
+    if (typeof value !== 'string') {
       throw new TypeError('value should be a string');
     }
 
@@ -683,7 +683,7 @@ WebDriver = function () {
    * @returns {WebDriver}
    */
   this.keys = function (value) {
-    if (! typeof value === 'string') {
+    if (typeof value !== 'string') {
       throw new TypeError('value should be a string');
     }
 
@@ -912,7 +912,7 @@ WebDriver = function () {
     _post('/session/:sessionId/moveto', {
       element: el instanceof WebElement ? el.getElementId() : null,
       xoffset: parseInt(offsetX, 10) || null,
-      yoffset parseInt(offsetY, 10) || null
+      yoffset: parseInt(offsetY, 10) || null
     });
 
     return this;
@@ -1036,7 +1036,7 @@ WebDriver = function () {
 
     if (!this.waitForCondition(conditionFn, this, timeout, interval)) {
       throw new Timeout('Element "' + value + '" was not found using "' + using + '" after ' + timeout +
-        ' seconds with polling interval of ' + interval + ' seconds.')
+        ' seconds with polling interval of ' + interval + ' seconds.');
     }
 
     return this.getElement(using, value);
@@ -1069,7 +1069,7 @@ WebDriver = function () {
 
     if (!this.waitForCondition(conditionFn, this, timeout, interval)) {
       throw new Timeout('Element "' + value + '" was not found using "' + using + '" after ' + timeout +
-        ' seconds with polling interval of ' + interval + ' seconds.')
+        ' seconds with polling interval of ' + interval + ' seconds.');
     }
   };
 
@@ -1087,8 +1087,8 @@ WebDriver = function () {
     };
 
     if (!this.waitForCondition(conditionFn, this, timeout, interval)) {
-      throw new Timeout('Alert was not found using after ' + timeout + ' seconds with polling interval of '
-        + interval + ' seconds.')
+      throw new Timeout('Alert was not found using after ' + timeout + ' seconds with polling interval of ' +
+        interval + ' seconds.');
     }
 
     return this.getAlertText();
@@ -1112,7 +1112,7 @@ WebDriver = function () {
     }
 
     throw new Timeout('There was an alert dialog still opened during ' + timeout + ' seconds.');
-  }
+  };
 };
 
 module.exports = WebDriver;
