@@ -896,6 +896,29 @@ WebDriver = function () {
   };
 
   /**
+   * Move the mouse by an offset of the specificed element.
+   *
+   * If no element is specified, the move is relative to the current mouse cursor.
+   * If an element is provided but no offset, the mouse will be moved to the center of the element.
+   * If the element is not visible, it will be scrolled into view.
+   *
+   * @param {WebElement|null} el
+   * @param {Number|null} offsetX
+   * @param {Number|null} offsetY
+   *
+   * @return {WebDriver}
+   */
+  this.moveTo = function (el, offsetX, offsetY) {
+    _post('/session/:sessionId/moveto', {
+      element: el instanceof WebElement ? el.getElementId() : null,
+      xoffset: parseInt(offsetX, 10) || null,
+      yoffset parseInt(offsetY, 10) || null
+    });
+
+    return this;
+  };
+
+  /**
    * Click any mouse button (at the coordinates set by the last moveto command).
    *
    * <p>Note that calling this command after calling buttondown and before calling button up (or any out-of-order

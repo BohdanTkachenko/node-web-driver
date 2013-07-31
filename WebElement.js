@@ -171,6 +171,11 @@ WebElement = function (elementId, wd) {
    * @returns {*}
    */
   this.dragAndDropTo = function (element) {
+    wd.moveTo(this);
+    wd.buttonDown();
+    wd.moveTo(element);
+    wd.buttonUp();
+
     return this;
   };
 };
