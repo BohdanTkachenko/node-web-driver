@@ -1,6 +1,6 @@
 {
   "name": "web-driver",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Synchronous WebDriver bindings to node.js",
   "main": "WebDriver.js",
   "dependencies": {
@@ -30,6 +30,6 @@
   },
   "readme": "Synchronous WebDriver bindings to node.js",
   "readmeFilename": "README.md",
-  "_id": "web-driver@0.0.5",
+  "_id": "web-driver@0.0.6",
   "_from": "web-driver@*"
 }

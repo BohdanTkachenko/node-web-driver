@@ -6,6 +6,7 @@ var
   WebDriver,
 
   WebElement = require('./WebElement'),
+  Cookie = require('./Cookie'),
   SpecialKeys = require('./SpecialKeys'),
 
   UnknownCommand = require('./errors/UnknownCommand'),
@@ -190,7 +191,7 @@ WebDriver = function () {
    * @private
    *
    * @param {String} path
-   * @patam {Object} data POST data.
+   * @param {Object} [data] POST data.
    *
    * @returns {Object}
    */
@@ -1113,6 +1114,70 @@ WebDriver = function () {
 
     throw new Timeout('There was an alert dialog still opened during ' + timeout + ' seconds.');
   };
+
+  /**
+   * Retrieve all cookies visible to the current page.
+   *
+   * @returns {Cookie[]} A list of cookies.
+   */
+  this.getCookies = function () {
+    return _get('/session/:sessionId/cookie').value;
+  };
+
+  /**
+   * Set a cookie.
+   *
+   * @param {Cookie} cookie
+   *
+   * @returns {WebDriver}
+   */
+  this.setCookie = function (cookie) {
+    if (! cookie instanceof Cookie) {
+      throw new TypeError('Wrong cookie object');
+    }
+
+    _post('/session/:sessionId/cookie', {
+      cookie: cookie.toObject()
+    });
+
+    return this;
+  };
+
+  /**
+   * Method for more simple way to add cookie.
+   *
+   * @param {String} name The name of the cookie.
+   * @param {String} value The cookie value.
+   * @param {String} [path] The cookie path.
+   * @param {String} [domain] The domain the cookie is visible to.
+   * @param {Boolean} [secure] Whether the cookie is a secure cookie.
+   * @param {Number} [expiry] Count of hours from now when the cookie expires.
+   */
+  this.cookie = function (name, value, path, domain, secure, expiry) {
+    expiry = expiry || 24;
+
+    var cookie = new Cookie({
+      name: name,
+      value: value,
+      path: path,
+      domain: domain,
+      secure: secure,
+      expiry: (new Date).getTime() + expiry * 3600
+    });
+
+    cookie.save();
+  };
+
+  /**
+   * Delete all cookies visible to the current page.
+   *
+   * @returns {WebDriver}
+   */
+  this.deleteCookies = function () {
+    _request('/session/:sessionId/cookie', 'DELETE');
+
+    return this;
+  }
 };
 
 module.exports = WebDriver;
