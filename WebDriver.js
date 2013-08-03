@@ -1154,18 +1154,16 @@ WebDriver = function () {
    * @param {Number} [expiry] Count of hours from now when the cookie expires.
    */
   this.cookie = function (name, value, path, domain, secure, expiry) {
-    expiry = expiry || 24;
-
     var cookie = new Cookie({
       name: name,
       value: value,
       path: path,
       domain: domain,
       secure: secure,
-      expiry: (new Date).getTime() + expiry * 3600
-    });
+      expiryHours: expiry || 24
+    }, this);
 
-    cookie.save();
+    this.setCookie(cookie);
   };
 
   /**
@@ -1175,6 +1173,21 @@ WebDriver = function () {
    */
   this.deleteCookies = function () {
     _request('/session/:sessionId/cookie', 'DELETE');
+
+    return this;
+  };
+
+  /**
+   * Delete cookie with given name.
+   *
+   * @param {String} name
+   *
+   * @returns {WebDriver}
+   */
+  this.deleteCookie = function (name) {
+    _request('/session/:sessionId/cookie', 'DELETE', JSON.stringify({
+      name: name
+    }));
 
     return this;
   }

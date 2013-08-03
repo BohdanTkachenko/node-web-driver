@@ -28,11 +28,13 @@ Cookie = function (data, wd) {
    * @param {String} name_
    */
   this.setName = function (name_) {
-    if (typeof name !== 'string' || !name) {
+    if (typeof name_ !== 'string' || !name_) {
       throw new TypeError('Cookie name should be a non-empty string');
     }
 
     name = name_;
+
+    return this;
   };
 
   /**
@@ -46,11 +48,13 @@ Cookie = function (data, wd) {
    * @param {String} value_
    */
   this.setValue = function (value_) {
-    if (data.value === undefined) {
+    if (value_ === undefined) {
       throw new TypeError('Cookie value is not defined');
     }
 
     value = value_;
+
+    return this;
   };
 
   /**
@@ -65,20 +69,24 @@ Cookie = function (data, wd) {
    */
   this.setPath = function (path_) {
     path = path_ || '/';
+
+    return this;
   };
 
   /**
    * @returns {String}
    */
   this.getDomain = function () {
-    return this.domain;
+    return domain;
   };
 
   /**
    * @param {String|undefined} domain_
    */
   this.setDomain = function (domain_) {
-    domain = domain_ || url.parse(wd.getCurrentUrl()).host;
+    domain = domain_ || url.parse(wd.getCurrentUrl()).hostname;
+
+    return this;
   };
 
   /**
@@ -93,6 +101,8 @@ Cookie = function (data, wd) {
    */
   this.setSecure = function (secure_) {
     secure = !!secure_;
+
+    return this;
   };
 
   /**
@@ -106,14 +116,22 @@ Cookie = function (data, wd) {
    * @param {Number} expiry_
    */
   this.setExpiry = function (expiry_) {
-    expiry = parseInt(expiry_, 10) || (new Date).getTime() + 3600 * 12;
+    expiry_ = parseInt(expiry_, 10);
+
+    if (expiry_ < 0) {
+      expiry_ = 0;
+    }
+
+    expiry = expiry_;
+
+    return this;
   };
 
   /**
-   * @returns {Cookie}
+   * @param {Number} hours
    */
-  this.save = function () {
-    wd.setCookie(this);
+  this.setExpiryInHours = function (hours) {
+    expiry = ((new Date).getTime() + hours * 3600) / 1000;
 
     return this;
   };
@@ -138,7 +156,12 @@ Cookie = function (data, wd) {
   this.setPath(data.path);
   this.setDomain(data.domain);
   this.setSecure(data.secure);
-  this.setExpiry(data.expiry);
+
+  if (data.expiryHours) {
+    this.setExpiryInHours(data.expiryHours);
+  } else {
+    this.setExpiry(data.expiry);
+  }
 };
 
 module.exports = Cookie;
