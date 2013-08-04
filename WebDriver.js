@@ -1032,7 +1032,15 @@ WebDriver = function () {
     interval = interval || 0.5;
 
     var conditionFn = function () {
-      return this.hasElement(using, value);
+      if (!this.hasElement(using, value)) {
+        return false;
+      }
+
+      if (!this.getElement(using, value).isDisplayed()) {
+        return false;
+      }
+
+      return true;
     };
 
     if (!this.waitForCondition(conditionFn, this, timeout, interval)) {
