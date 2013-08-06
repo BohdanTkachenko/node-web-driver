@@ -1,10 +1,10 @@
 {
   "name": "web-driver",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Synchronous WebDriver bindings to node.js",
   "main": "WebDriver.js",
   "dependencies": {
-    "http-sync": "~0.0.1",
+    "http-sync": "*",
     "underscore": "~1.5.1"
   },
   "devDependencies": {},
@@ -30,7 +30,7 @@
   },
   "readme": "Synchronous WebDriver bindings to node.js",
   "readmeFilename": "README.md",
-  "_id": "web-driver@0.0.8",
+  "_id": "web-driver@0.0.9",
   "_from": "web-driver@"
 }
 
