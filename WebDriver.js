@@ -141,19 +141,19 @@ WebDriver = function () {
     res.statusCode = parseInt(res.statusCode, 10);
 
     if (res.statusCode === 303) {
-      if (!res.headers.location) {
-        throw UnknownError;
+      if (!res.headers.Location) {
+        throw new UnknownError;
       }
 
-      return res.headers.location;
+      return res.headers.Location;
     } else if (res.statusCode === 404) {
       throw new UnknownCommand();
     } else if (res.statusCode !== 200) {
       throw new UnknownError('Unknown status code: ' + req.statusCode);
     }
 
-    if (res.headers['content-type'] !== 'application/json; charset=utf-8') {
-      throw method + ' ' + path + ': got content-type ' + res.headers['content-type'] +
+    if (res.headers['Content-Type'] !== 'application/json; charset=utf-8') {
+      throw method + ' ' + path + ': got content-type ' + res.headers['Content-Type'] +
         '. should be "application/json; charset=utf-8"';
     }
 
