@@ -1,6 +1,6 @@
 {
   "name": "web-driver",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Synchronous WebDriver bindings to node.js",
   "main": "WebDriver.js",
   "dependencies": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bogus-weber/node-web-driver.git"
+    "url": "git@github.com:BohdanTkachenko/node-web-driver.git"
   },
   "keywords": [
     "selenium",
@@ -21,8 +21,8 @@
     "tests"
   ],
   "author": {
-    "name": "Bogdan Tkachenko",
-    "email": "bogus.weber@gmail.com"
+    "name": "Bohdan Tkachenko",
+    "email": "bohdan@tkachenko.io"
   },
   "license": "MIT",
   "bugs": {
